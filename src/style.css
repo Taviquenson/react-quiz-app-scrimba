@@ -95,6 +95,7 @@ div.options-container {
 }
 
 button.option {
+  padding: 3px 8px;
   font-size: 0.65rem;
   font-weight: 500;
   font-family: "Inter", sans-serif;
@@ -116,6 +117,22 @@ button.option:active {
 button.option-selected {
   background-color: #D6DBF5;
   border: none;
+}
+
+button.option-game-over {
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+button.option-wrong {
+  background-color: #F8BCBC;
+  border: none;
+}
+
+button.option-correct {
+  background-color: #94D7A2;
+  border: none;
+  opacity: 100%;
 }
 
 hr {

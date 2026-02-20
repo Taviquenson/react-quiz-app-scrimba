@@ -6,7 +6,7 @@ import { decode } from 'html-entities';
 export default function App() {
   const [triviaData, setTriviaData] = useState([]);
   const [isGameStarted, setIsGameStarted ]= useState(false);
-  // let isGameStarted = triviaData.length > 0
+  const [isGameOver, setIsGameOver ]= useState(false);
 
   // Create a ref to track the first render
   const isMounted = useRef(false);
@@ -30,18 +30,17 @@ export default function App() {
       })
   }, [isGameStarted]);
 
-  function handleStart() {
-    setIsGameStarted(true)
-    // isGameStarted = !isGameStarted
+  function handleStartRestart() {
+    setIsGameStarted(prevIsgameStarted => !isGameStarted)
   }
 
   return (
     <>
       {/* Render if  we haven't  gotten data yet*/}
-      {triviaData.length === 0 && <Start startFn={handleStart} />}
+      {triviaData.length === 0 && <Start startFn={handleStartRestart} />}
 
       {/* Render if  we got data*/}
-      {triviaData.length > 0 && <Quiz triviaData={triviaData} setTriviaData={setTriviaData}/>}
+      {triviaData.length > 0 && <Quiz triviaData={triviaData} setTriviaData={setTriviaData} isGameOver={isGameOver} setIsGameOver={setIsGameOver}/>}
     </>
   )
 }

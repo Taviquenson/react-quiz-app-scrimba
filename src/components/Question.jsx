@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { useMemo } from 'react'
 
-export default function Question({questionData, triviaData, setTriviaData, qIndex}) {
-    console.log(questionData)
+export default function Question({triviaData, setTriviaData, qIndex, isGameOver}) {
+    console.log(triviaData[qIndex])
 
-    const allOptions = [...questionData.incorrect_answers, questionData.correct_answer]
+    const allOptions = [...triviaData[qIndex].incorrect_answers, triviaData[qIndex].correct_answer]
 
-    // Randomize the options
+    // Randomize the options once (qIndex won't be changing)
     const shuffledOptions = useMemo(() => {
         return allOptions.sort(() => Math.random() - 0.5);
     }, [qIndex]);
@@ -27,13 +27,27 @@ export default function Question({questionData, triviaData, setTriviaData, qInde
 
 
     const options = shuffledOptions.map((option, index) => {
-        const styles = clsx('option', triviaData[qIndex].selection === option ? 'option-selected' : '')
+        const selection = triviaData[qIndex].selection
+
+        let styles = null;
+
+        if (isGameOver) {
+            styles = clsx('option',
+                'option-game-over',
+                selection === option && selection !== triviaData[qIndex].correct_answer ? 'option-wrong' : '',
+                option === triviaData[qIndex].correct_answer ? 'option-correct' : ''
+            )
+        } else {
+            styles = clsx('option', selection === option ? 'option-selected' : '')
+        }
+
 
         return (
             <button
                 key={index} 
                 className={styles}
                 onClick={selectAnswer}
+                disabled={isGameOver ? true : false}
                 >
                 {option}
             </button>
@@ -42,7 +56,7 @@ export default function Question({questionData, triviaData, setTriviaData, qInde
     
     return (
         <div className="question">
-            <p className="question-text">{questionData.question}</p>
+            <p className="question-text">{triviaData[qIndex].question}</p>
             <div className="options-container">
                 {options}
             </div>
