@@ -56,7 +56,6 @@ section.start > button {
   transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for the effect */
 }
 
-/* Styles when the button is actively being clicked */
 section.start > button:active {
   transform: translateY(3px); /* Move button down 3px */
 }
@@ -72,3 +71,75 @@ img.blob-bottom {
   bottom: 0;
   left: 0;
 }
+
+/******* Questions/Quiz Styling ******/
+div.question {
+  margin-top: 1rem;
+}
+
+p.question-text, button.option {
+  color: #293264;
+  line-height: 100%;
+  margin: 0;
+}
+
+p.question-text {
+  font-weight: 700;
+  max-width: 28rem;
+}
+
+div.options-container {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.8125rem;
+}
+
+button.option {
+  font-size: 0.65rem;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  border: solid #4D5B9E  0.05rem;
+  border-radius: 7.71px;
+  min-width: 4.375rem;
+  max-width: 7.5rem;
+  min-height: 1.25rem;
+  background: none;
+  line-height: 100%;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button.option:active {
+  transform: translateY(3px);
+}
+
+hr {
+  margin-top: 1rem !important;
+  margin-bottom: 0px !important;
+  border: none;            /* Removes default browser styling */
+  height: 0.79px;             /* Sets the thickness of the line */
+  background-color: #DBDEF0;  /* Sets the color */
+  margin: 20px auto;       /* Adds spacing and centers it */
+}
+
+button.quiz-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.25rem;
+  border: none;
+  color: #F5F7FB;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  background-color: #4D5B9E;
+  line-height: 100%;
+  width: 7.5rem;
+  height: 2.2rem;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button.quiz-btn:active {
+  transform: translateY(3px); 
+}
+/******* Questions/Quiz Styling ******/

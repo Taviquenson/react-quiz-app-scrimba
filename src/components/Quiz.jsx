@@ -4,13 +4,13 @@ export default function Quiz(props) {
     // const questionData = props.triviaData[0]
 
     const questions = props.triviaData.map((questionData, index) => 
-        <Question key={index} questionData={questionData} />)
+        <Question key={index} questionData={questionData} style={{ overflow: 'hidden' }}/>)
 
     return (
         <section className='quiz'>
                 <img className='blob-top' src='../../public/blob-top-quiz.png'/>
-                {/* <Question questionData={questionData}/> */}
                 {questions}
+                <button className='quiz-btn'>Check answers</button>
                 <img className='blob-bottom' src='../../public/blob-bottom-quiz.png'/>
         </section>
     )
