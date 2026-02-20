@@ -1,10 +1,12 @@
 import Question from './Question.jsx'
 export default function Quiz(props) {
-    // console.log(props.triviaData[0])
-    // const questionData = props.triviaData[0]
-
     const questions = props.triviaData.map((questionData, index) => 
-        <Question key={index} questionData={questionData} style={{ overflow: 'hidden' }}/>)
+        <Question 
+            key={index} 
+            questionData={questionData} 
+            triviaData={props.triviaData} setTriviaData={props.setTriviaData}
+            qIndex={index}
+        />)
 
     return (
         <section className='quiz'>

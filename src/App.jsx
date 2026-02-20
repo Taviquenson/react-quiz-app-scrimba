@@ -18,7 +18,6 @@ export default function App() {
       return; // Skip the effect's logic on initial load
     }
 
-    // console.log("useEffect begins")
     fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
       .then(res => res.json())
       .then(data => {
@@ -29,7 +28,6 @@ export default function App() {
         
         setTriviaData(cleanedData)
       })
-    // console.log("useEffect ends")
   }, [isGameStarted]);
 
   function handleStart() {

@@ -1,12 +1,44 @@
-export default function Question({questionData}) {
+import clsx from 'clsx';
+import { useMemo } from 'react'
+
+export default function Question({questionData, triviaData, setTriviaData, qIndex}) {
     console.log(questionData)
 
     const allOptions = [...questionData.incorrect_answers, questionData.correct_answer]
-    console.log(allOptions)
 
     // Randomize the options
-    const shuffledOptions = allOptions.sort(() => Math.random() - 0.5);
-    const options = shuffledOptions.map((option, index) => <button key={index} className="option">{option}</button>)
+    const shuffledOptions = useMemo(() => {
+        return allOptions.sort(() => Math.random() - 0.5);
+    }, [qIndex]);
+    
+
+    function selectAnswer(event) {
+        setTriviaData(triviaData.map((question, index) => {
+            if (index === qIndex) {
+                return {
+                    ...question,
+                    selection: event.target.textContent
+                }
+            } else {
+                return question
+            }
+        }))
+    }
+
+
+    const options = shuffledOptions.map((option, index) => {
+        const styles = clsx('option', triviaData[qIndex].selection === option ? 'option-selected' : '')
+
+        return (
+            <button
+                key={index} 
+                className={styles}
+                onClick={selectAnswer}
+                >
+                {option}
+            </button>
+        )
+    })
     
     return (
         <div className="question">

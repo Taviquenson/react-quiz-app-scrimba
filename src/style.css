@@ -113,6 +113,11 @@ button.option:active {
   transform: translateY(3px);
 }
 
+button.option-selected {
+  background-color: #D6DBF5;
+  border: none;
+}
+
 hr {
   margin-top: 1rem !important;
   margin-bottom: 0px !important;
