@@ -1,5 +1,5 @@
-import blobTop from "../public/blob-top-home.png"
-import blobBottom from "../public/blob-top-home.png"
+import blobTop from "../../public/blob-top-home.png"
+import blobBottom from "../../public/blob-bottom-home.png"
 
 export default function Start(props) {
     return (
