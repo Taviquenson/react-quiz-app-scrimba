@@ -23,24 +23,30 @@ export default function App() {
       .then(data => {
         const cleanedData = data.results.map(result => ({
           ...result,
-          question: decode(result.question)
+          question: decode(result.question),
+          correct_answer: decode(result.correct_answer),
+          incorrect_answers: result.incorrect_answers.map(answer => decode(answer))
         }))
         
         setTriviaData(cleanedData)
       })
   }, [isGameStarted]);
 
-  function handleStartRestart() {
-    setIsGameStarted(prevIsgameStarted => !isGameStarted)
+  function handleStart() {
+    setIsGameStarted(prevIsGameStarted => !prevIsGameStarted)
   }
 
   return (
     <>
       {/* Render if  we haven't  gotten data yet*/}
-      {triviaData.length === 0 && <Start startFn={handleStartRestart} />}
+      {triviaData.length === 0 && <Start startFn={handleStart} />}
 
       {/* Render if  we got data*/}
-      {triviaData.length > 0 && <Quiz triviaData={triviaData} setTriviaData={setTriviaData} isGameOver={isGameOver} setIsGameOver={setIsGameOver}/>}
+      {triviaData.length > 0 && <Quiz triviaData={triviaData}
+                                      setTriviaData={setTriviaData}
+                                      isGameOver={isGameOver}
+                                      setIsGameOver={setIsGameOver}
+                                      setIsGameStarted={setIsGameStarted}/>}
     </>
   )
 }

@@ -159,9 +159,29 @@ button.quiz-btn {
   height: 2.2rem;
   border-radius: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
 button.quiz-btn:active {
   transform: translateY(3px); 
+}
+
+div.game-over-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+div.game-over-footer > span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: #293264;
+  font-weight: 700;
+  line-height: normal;
+}
+
+button.play-again-btn {
+  margin: 0;
 }
 /******* Questions/Quiz Styling ******/

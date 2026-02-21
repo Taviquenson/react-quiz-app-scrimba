@@ -6,10 +6,13 @@ export default function Question({triviaData, setTriviaData, qIndex, isGameOver}
 
     const allOptions = [...triviaData[qIndex].incorrect_answers, triviaData[qIndex].correct_answer]
 
-    // Randomize the options once (qIndex won't be changing)
+    // Obtaining a string from the contents of the options to use in dependency array
+    const optionsKey = allOptions.join("|");
+
+    // Randomize the options on load AND when new options are received
     const shuffledOptions = useMemo(() => {
         return allOptions.sort(() => Math.random() - 0.5);
-    }, [qIndex]);
+    }, [optionsKey]); // can't use allOptions here because it compares arrays by ref
     
 
     function selectAnswer(event) {
