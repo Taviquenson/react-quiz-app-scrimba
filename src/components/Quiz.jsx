@@ -1,4 +1,7 @@
 import Question from './Question.jsx'
+import blobTop from '../../public/blob-top-quiz.png'
+import blobBottom from '../../public/blob-bottom-quiz.png'
+
 export default function Quiz(props) {
     const score = props.triviaData.filter(questionData => {
         return questionData.selection ? 
@@ -41,10 +44,10 @@ export default function Quiz(props) {
 
     return (
         <section className='quiz'>
-                <img className='blob-top' src='../../public/blob-top-quiz.png'/>
+                <img className='blob-top' src={blobTop}/>
                 {questions}
                 {renderGameOver()}
-                <img className='blob-bottom' src='../../public/blob-bottom-quiz.png'/>
+                <img className='blob-bottom' src={blobBottom}/>
         </section>
     )
 }
